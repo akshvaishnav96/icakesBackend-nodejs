@@ -4,6 +4,8 @@ import { deleteCategory, editCategory, showCategory, updateCategory, uplodeCateg
 import { deleteSubCategory, editSubCategory, showSubCategory, updateSubCategory, uplodeSubCategory } from "../controllers/subcategory.js";
 import { deleteTier, editTier, showTier, updateTier, uplodeTier } from "../controllers/tier.js";
 import { deleteSize, editSize, showSize, updateSize, uplodeSize } from "../controllers/size.js";
+import { deleteFlavor, editFlavor, showFlavor, updateFlavor, uplodeFlavor } from "../controllers/flavor.js";
+import { upload } from "../middleware/multer.js";
 
 const cakeRouter = Router();
 
@@ -34,6 +36,12 @@ cakeRouter.route("/size").post(uplodeSize);
 cakeRouter.route("/size/edit/:id").get(editSize);
 cakeRouter.route("/size/edit/:id").patch(updateSize);
 cakeRouter.route("/size/delete/:id").delete(deleteSize);
+
+cakeRouter.route("/flavor").get(showFlavor);
+cakeRouter.route("/flavor").post(upload.single('image'), uplodeFlavor);
+cakeRouter.route("/flavor/edit/:id").get(editFlavor);
+cakeRouter.route("/flavor/edit/:id").patch(upload.single('image'), updateFlavor);
+cakeRouter.route("/flavor/delete/:id").delete(deleteFlavor);
 
 
 
