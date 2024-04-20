@@ -19,13 +19,10 @@ const uplodeFlavor = async (req, res) => {
     let image = req.file?.path;
 
 
-    const falseImageExt = image.substr(image.lastIndexOf('.') + 1);
 
 
     try {
-        if (falseImageExt === "false") {
-            throw new Error(`Image format not allowed`);
-        }
+
 
         const alreadyExist = await CakeFlavor.find({ cakeFlavor });
 
@@ -78,21 +75,13 @@ const updateFlavor = async (req, res) => {
     const { cakeFlavor, description, ingredients } = req.body
     const imagepath = req.file?.path;
 
-    let falseImageExt;
 
-    if (imagepath) {
-
-        falseImageExt = imagepath.substr(imagepath.lastIndexOf('.') + 1);
-    }
 
 
 
 
 
     try {
-        if (falseImageExt === "false") {
-            throw new Error(`Image format not allowed`);
-        }
 
 
         const alreadyExist = await CakeFlavor.findById({ _id });

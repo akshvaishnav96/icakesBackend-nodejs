@@ -70,7 +70,7 @@ cakeRouter.route("/cakeSizewithprice/delete/:id").delete(deleteCakeSizeWithPrice
 
 
 cakeRouter.route("/cake").get(showcake);
-cakeRouter.route("/cake").post(uplodecake);
+cakeRouter.route("/cake").post(upload.array('images', 5),uplodecake);
 cakeRouter.route("/cake/edit/:id").get(updatecake);
 cakeRouter.route("/cake/edit/:id").patch(editcake);
 cakeRouter.route("/cake/delete/:id").delete(deletecake);
